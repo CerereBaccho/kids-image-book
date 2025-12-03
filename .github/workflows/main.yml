@@ -9,6 +9,9 @@ on:
   # GitHub ActionsのUIから手動実行できるようにする
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 # 実行中のジョブを最新のコミットに限定し、前のジョブをキャンセルする
 concurrency:
   cancel-in-progress: true
