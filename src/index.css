@@ -23,24 +23,24 @@ body {
     @apply min-h-screen bg-[var(--color-background)] text-[var(--color-text)];
   }
 
-  .app-card {
+  .app-card, .card {
     @apply bg-white/95 shadow-2xl rounded-[28px] border border-amber-100;
   }
 
   .primary-button {
-    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#ff835a] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)]/40 disabled:opacity-60 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#ff835a] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)] focus:ring-opacity-40 disabled:opacity-60 disabled:cursor-not-allowed;
   }
 
   .secondary-button {
-    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-secondary)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#73d5ff] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)]/40;
+    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-secondary)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#73d5ff] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)] focus:ring-opacity-40;
   }
 
   .soft-chip {
-    @apply w-full rounded-full bg-[var(--color-secondary)]/25 text-[var(--color-text)] font-bold shadow-md border border-[var(--color-secondary)]/40 px-4 py-3 text-base sm:text-lg hover:bg-[var(--color-secondary)]/40 active:bg-[var(--color-secondary)]/55 transition;
+    @apply w-full rounded-full bg-[var(--color-secondary)] bg-opacity-25 text-[var(--color-text)] font-bold shadow-md border border-[var(--color-secondary)] border-opacity-40 px-4 py-3 text-base sm:text-lg hover:bg-opacity-40 active:bg-opacity-60 transition;
   }
 
   .status-card {
-    @apply bg-white/90 border border-[var(--color-secondary)]/30 shadow-md rounded-2xl px-5 py-4 text-center font-semibold text-[var(--color-text)];
+    @apply bg-white/90 border border-[var(--color-secondary)] border-opacity-30 shadow-md rounded-2xl px-5 py-4 text-center font-semibold text-[var(--color-text)];
   }
 
   .viewer-overlay {
@@ -48,7 +48,7 @@ body {
   }
 
   .result-thumb {
-    @apply w-full h-[170px] sm:h-[180px] object-cover rounded-[14px] sm:rounded-[16px] shadow-sm border border-amber-50;
+    @apply w-full h-[170px] sm:h-[180px] object-cover rounded-[14px] sm:rounded-[16px] shadow-sm border border-amber-50 my-2;
   }
 
   .viewer-image {
