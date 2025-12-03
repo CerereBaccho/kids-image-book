@@ -18,14 +18,14 @@ const SearchScreen = ({ searchTerm, isLoading, error, handleSearch }) => {
   };
 
   return (
-    <div className="app-background px-5 py-10 flex items-center justify-center">
-      <div className="w-full max-w-[480px] mx-auto">
-        <div className="app-card px-6 py-8 sm:px-10 sm:py-12 flex flex-col items-center text-center gap-8">
-          <div className="space-y-3 sm:space-y-4">
-            <p className="inline-flex items-center px-4 py-2 rounded-full bg-[var(--color-secondary)]/20 text-[var(--color-secondary)] font-bold shadow-md text-base sm:text-lg">
+    <div className="app-background px-5 py-12 sm:py-16 flex items-start justify-center">
+      <div className="w-full max-w-[600px] mx-auto">
+        <div className="app-card px-8 sm:px-10 py-10 sm:py-12 flex flex-col items-stretch text-center gap-10 shadow-2xl">
+          <div className="space-y-4 sm:space-y-5">
+            <p className="inline-flex items-center px-5 py-2 rounded-full bg-[var(--color-secondary)]/25 text-[var(--color-secondary)] font-bold shadow-md text-base sm:text-lg">
               こども専用ビューアー
             </p>
-            <h1 className="text-[34px] sm:text-[38px] md:text-[42px] leading-tight font-extrabold text-[var(--color-primary)] drop-shadow-sm">
+            <h1 className="text-[34px] sm:text-[40px] leading-tight font-extrabold text-[var(--color-primary)] drop-shadow-sm">
               くるま と でんしゃ ずかん
             </h1>
             <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
@@ -33,21 +33,22 @@ const SearchScreen = ({ searchTerm, isLoading, error, handleSearch }) => {
             </p>
           </div>
 
-          <SearchInput onSearch={handleSearch} defaultValue={searchTerm} />
-
-          <div className="w-full max-w-xl">
-            <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-text)] mb-4 text-center">みんなが よくみる きょうみワード</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-              {PRESET_KEYWORDS.map((keyword) => (
-                <button
-                  key={keyword}
-                  type="button"
-                  onClick={() => handlePresetClick(keyword)}
-                  className="soft-chip"
-                >
-                  {keyword}
-                </button>
-              ))}
+          <div className="w-full flex flex-col gap-6">
+            <SearchInput onSearch={handleSearch} defaultValue={searchTerm} />
+            <div className="w-full max-w-xl mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-text)] mb-4 text-center">みんなが よくみる きょうみワード</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+                {PRESET_KEYWORDS.map((keyword) => (
+                  <button
+                    key={keyword}
+                    type="button"
+                    onClick={() => handlePresetClick(keyword)}
+                    className="soft-chip"
+                  >
+                    {keyword}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 

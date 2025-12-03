@@ -6,6 +6,10 @@ body {
   @apply min-h-screen bg-[#FFF8E1] text-[#333333] antialiased;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 #root {
   @apply min-h-screen flex flex-col;
 }
@@ -45,6 +49,58 @@ body {
 
   .viewer-overlay {
     @apply relative min-h-screen flex flex-col bg-slate-950;
+  }
+
+  .viewer-shell {
+    @apply relative h-screen min-h-screen flex flex-col overflow-hidden bg-slate-950 text-white;
+  }
+
+  .viewer-backdrop {
+    @apply absolute inset-0 bg-black/70;
+  }
+
+  .viewer-header {
+    @apply relative z-20 flex items-center justify-start h-14 sm:h-16 px-5 pt-4 pb-3;
+  }
+
+  .viewer-back-button {
+    @apply text-lg sm:text-xl px-6 py-3 rounded-full shadow-xl;
+  }
+
+  .viewer-main {
+    @apply relative z-10 flex-1 flex flex-col px-4 sm:px-6 pb-4 sm:pb-6 overflow-hidden;
+  }
+
+  .viewer-stage {
+    @apply flex-1 bg-white/10 border border-white/15 rounded-[28px] shadow-2xl p-4 sm:p-6 flex overflow-hidden backdrop-blur-sm;
+  }
+
+  .viewer-swiper {
+    @apply flex-1;
+  }
+
+  .viewer-slide {
+    @apply w-full h-full flex items-center justify-center;  
+  }
+
+  .viewer-meta {
+    @apply relative z-20 shrink-0 w-full;
+  }
+
+  .viewer-meta-card {
+    @apply bg-white/95 text-[#333333] px-4 sm:px-6 py-4 sm:py-5 shadow-2xl border-t border-amber-100 rounded-t-[24px] max-h-[24vh] overflow-hidden;
+  }
+
+  .viewer-meta-title {
+    @apply text-sm sm:text-base font-bold text-[var(--color-accent)] truncate;
+  }
+
+  .viewer-meta-lines {
+    @apply flex flex-wrap gap-x-4 gap-y-1 text-[12px] sm:text-sm text-gray-700;
+  }
+
+  .viewer-meta-filename {
+    @apply text-[11px] sm:text-xs text-gray-500 break-all;
   }
 
   .result-thumb {
