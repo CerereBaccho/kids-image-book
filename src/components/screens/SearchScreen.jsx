@@ -1,6 +1,5 @@
 import React from 'react';
 import SearchInput from '../gallery/SearchInput';
-import useAppState from '../../hooks/useAppState';
 
 const PRESET_KEYWORDS = [
   'しんかんせん',
@@ -12,8 +11,7 @@ const PRESET_KEYWORDS = [
   'きょうりゅう',
 ];
 
-const SearchScreen = () => {
-  const { searchTerm, isLoading, error, handleSearch } = useAppState();
+const SearchScreen = ({ searchTerm, isLoading, error, handleSearch }) => {
 
   const handlePresetClick = (keyword) => {
     handleSearch(keyword);
