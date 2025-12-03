@@ -1,5 +1,4 @@
 import React from 'react';
-import useAppState from '../../hooks/useAppState';
 
 const formatTitle = (title) => {
   if (!title) return '';
@@ -7,8 +6,7 @@ const formatTitle = (title) => {
   return withoutExtension.replace(/[_-]+/g, ' ').trim();
 };
 
-const GalleryScreen = () => {
-  const { searchResults, searchTerm, isLoading, handleSetScreen } = useAppState();
+const GalleryScreen = ({ searchResults, searchTerm, isLoading, handleSetScreen }) => {
 
   const handleSelectImage = (image) => {
     try {

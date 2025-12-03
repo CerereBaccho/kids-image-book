@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
-import useAppState from '../../hooks/useAppState';
 
-const ErrorScreen = () => {
-  const { searchTerm, error, isLoading, handleSearch, handleSetScreen } = useAppState();
+const ErrorScreen = ({ searchTerm, error, isLoading, handleSearch, handleSetScreen }) => {
 
   const headline = useMemo(() => {
     const raw = error?.message || '';

@@ -1,10 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import ImageSwiper from '../gallery/ImageSwiper';
 import AttributionFooter from '../common/AttributionFooter';
-import useAppState from '../../hooks/useAppState';
 
-const ViewerScreen = () => {
-  const { searchResults, handleSetScreen } = useAppState();
+const ViewerScreen = ({ searchResults, handleSetScreen }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
