@@ -3,8 +3,33 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import AttributionFooter from '../common/AttributionFooter';
 
+const getInitialIndex = (searchResults) => {
+  let initialIndex = 0;
+
+  try {
+    const storedId = sessionStorage.getItem('viewer:selectedImageId');
+    if (storedId && Array.isArray(searchResults)) {
+      const foundIndex = searchResults.findIndex((item) => item.id === storedId);
+      if (foundIndex >= 0) {
+        initialIndex = foundIndex;
+      }
+    }
+  } catch (err) {
+    // sessionStorage might be blocked; ignore and fallback to first image
+  }
+
+  if (Array.isArray(searchResults) && searchResults.length > 0) {
+    initialIndex = Math.min(initialIndex, searchResults.length - 1);
+  } else {
+    initialIndex = 0;
+  }
+
+  return initialIndex;
+};
+
 const ViewerScreen = ({ searchResults, handleSetScreen }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const initialIndex = useMemo(() => getInitialIndex(searchResults), [searchResults]);
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
   useEffect(() => {
     document.body.classList.add('no-scroll');
@@ -15,28 +40,8 @@ const ViewerScreen = ({ searchResults, handleSetScreen }) => {
   }, []);
 
   useEffect(() => {
-    let initialIndex = 0;
-
-    try {
-      const storedId = sessionStorage.getItem('viewer:selectedImageId');
-      if (storedId && Array.isArray(searchResults)) {
-        const foundIndex = searchResults.findIndex((item) => item.id === storedId);
-        if (foundIndex >= 0) {
-          initialIndex = foundIndex;
-        }
-      }
-    } catch (err) {
-      // sessionStorage might be blocked; ignore and fallback to first image
-    }
-
-    if (Array.isArray(searchResults) && searchResults.length > 0) {
-      initialIndex = Math.min(initialIndex, searchResults.length - 1);
-    } else {
-      initialIndex = 0;
-    }
-
     setCurrentIndex(initialIndex);
-  }, [searchResults]);
+  }, [initialIndex]);
 
   const currentImage = useMemo(() => {
     if (!Array.isArray(searchResults) || searchResults.length === 0) return null;
@@ -75,9 +80,11 @@ const ViewerScreen = ({ searchResults, handleSetScreen }) => {
             </div>
           ) : (
             <Swiper
+              direction="horizontal"
               slidesPerView={1}
-              spaceBetween={16}
-              initialSlide={currentIndex}
+              spaceBetween={0}
+              centeredSlides={false}
+              initialSlide={initialIndex}
               onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
               allowTouchMove
               className="viewer-swiper"

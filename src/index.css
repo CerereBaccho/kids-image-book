@@ -76,7 +76,15 @@ body.no-scroll {
   }
 
   .viewer-swiper {
-    @apply flex-1;
+    @apply flex-1 h-full;
+  }
+
+  .viewer-swiper .swiper-wrapper {
+    @apply h-full;
+  }
+
+  .viewer-swiper .swiper-slide {
+    width: 100% !important;
   }
 
   .viewer-slide {
