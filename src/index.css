@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply min-h-screen bg-gradient-to-b from-sky-100 via-white to-pink-100 text-slate-900 antialiased;
+  @apply min-h-screen bg-[#FFF8E1] text-[#333333] antialiased;
 }
 
 #root {

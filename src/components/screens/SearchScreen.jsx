@@ -20,51 +20,51 @@ const SearchScreen = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-100 via-white to-amber-100 text-gray-800 px-4 py-10 sm:py-14">
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-        <div className="text-center space-y-3 sm:space-y-4">
-          <p className="inline-flex items-center px-4 py-2 rounded-full bg-amber-200 text-amber-800 font-semibold shadow-md text-sm sm:text-base">
-            こども専用ビューアー
-          </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-700 drop-shadow-sm">
-            すきなものを さがして みよう！
-          </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            きょうは なにが みたい？ キーワードを いれてね。えいご でも にほんご でも だいじょうぶ！
-          </p>
+    <div className="min-h-screen bg-[#FFF8E1] text-[#333333] px-5 py-10 flex items-center justify-center">
+      <div className="w-full max-w-4xl mx-auto">
+        <div className="bg-white/90 border border-amber-100 shadow-2xl rounded-[28px] px-6 py-8 sm:px-10 sm:py-12 flex flex-col items-center text-center gap-7">
+          <div className="space-y-3 sm:space-y-4">
+            <p className="inline-flex items-center px-4 py-2 rounded-full bg-[#4FC3F7]/20 text-[#4FC3F7] font-bold shadow-md text-base sm:text-lg">
+              こども専用ビューアー
+            </p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFB74D] drop-shadow-sm">
+              くるま と でんしゃ ずかん
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+              すきな なまえを いれて みてね。おおきなボタンで さがせるよ！
+            </p>
+          </div>
+
+          <SearchInput onSearch={handleSearch} defaultValue={searchTerm} />
+
+          <div className="w-full max-w-3xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#333333] mb-4 text-center">みんなが よくみる きょうみワード</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5">
+              {PRESET_KEYWORDS.map((keyword) => (
+                <button
+                  key={keyword}
+                  type="button"
+                  onClick={() => handlePresetClick(keyword)}
+                  className="w-full py-4 sm:py-5 px-4 bg-white/90 border-2 border-[#FFB74D]/70 text-lg sm:text-xl font-extrabold rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-transform focus:outline-none focus:ring-4 focus:ring-[#4FC3F7]/40"
+                >
+                  {keyword}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {isLoading && (
+            <div className="text-center text-lg sm:text-xl font-semibold text-[#4FC3F7] bg-[#4FC3F7]/10 px-4 py-3 rounded-2xl">
+              いま さがしているよ…
+            </div>
+          )}
+
+          {error && (
+            <div className="w-full max-w-xl bg-red-50 border border-red-200 text-red-700 px-5 py-4 rounded-2xl shadow-sm text-center font-semibold">
+              うまく ひらけなかったよ。 もういちど ためしてね。
+            </div>
+          )}
         </div>
-
-        <SearchInput onSearch={handleSearch} defaultValue={searchTerm} />
-
-        <div className="w-full max-w-4xl">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-700 mb-4 text-center">
-            みんなが よくみる きょうみワード
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
-            {PRESET_KEYWORDS.map((keyword) => (
-              <button
-                key={keyword}
-                type="button"
-                onClick={() => handlePresetClick(keyword)}
-                className="w-full py-4 sm:py-5 px-4 bg-white border-2 border-amber-300 text-lg sm:text-xl font-bold rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-transform focus:outline-none focus:ring-4 focus:ring-amber-200"
-              >
-                {keyword}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {isLoading && (
-          <div className="text-center text-lg sm:text-xl font-semibold text-sky-600 animate-pulse">
-            いま さがしているよ…
-          </div>
-        )}
-
-        {error && (
-          <div className="w-full max-w-xl bg-red-50 border border-red-200 text-red-700 px-5 py-4 rounded-2xl shadow-sm text-center font-semibold">
-            うまく ひらけなかったよ。 もういちど ためしてね。
-          </div>
-        )}
       </div>
     </div>
   );
