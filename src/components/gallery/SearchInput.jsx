@@ -37,9 +37,9 @@ const SearchInput = ({ onSearch, defaultValue = '' }) => {
     <div className="w-full max-w-xl mx-auto">
       <form
         onSubmit={handleSubmit}
-        className="bg-white/90 border-2 border-[#FFB74D]/70 rounded-full shadow-xl px-2 py-1 sm:px-3 sm:py-2"
+        className="bg-white/95 border-2 border-[var(--color-primary)]/70 rounded-full shadow-xl px-3 py-3 sm:px-4 sm:py-4"
       >
-        <div className="flex items-center gap-2 bg-white rounded-full px-4 py-3 sm:py-4 shadow-inner">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 bg-white rounded-full px-5 py-4 sm:py-5 shadow-inner">
           <input
             type="text"
             value={value}
@@ -51,7 +51,7 @@ const SearchInput = ({ onSearch, defaultValue = '' }) => {
           <button
             type="submit"
             disabled={disabled}
-            className="px-6 sm:px-7 py-3 sm:py-4 bg-[#FF7043] hover:bg-[#ff835a] text-white text-lg sm:text-xl font-extrabold rounded-full shadow-lg transition transform active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="primary-button w-full sm:w-auto px-10 sm:px-8 py-4 sm:py-4 text-lg sm:text-xl"
           >
             さがす
           </button>

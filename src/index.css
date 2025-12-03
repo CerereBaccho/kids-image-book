@@ -6,6 +6,108 @@ body {
   @apply min-h-screen bg-[#FFF8E1] text-[#333333] antialiased;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 #root {
   @apply min-h-screen flex flex-col;
+}
+
+:root {
+  --color-background: #FFF8E1;
+  --color-primary: #FFB74D;
+  --color-secondary: #4FC3F7;
+  --color-accent: #FF7043;
+  --color-text: #333333;
+}
+
+@layer components {
+  .app-background {
+    @apply min-h-screen bg-[var(--color-background)] text-[var(--color-text)];
+  }
+
+  .app-card, .card {
+    @apply bg-white/95 shadow-2xl rounded-[28px] border border-amber-100;
+  }
+
+  .primary-button {
+    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#ff835a] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)] focus:ring-opacity-40 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-secondary)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#73d5ff] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)] focus:ring-opacity-40;
+  }
+
+  .soft-chip {
+    @apply w-full rounded-full bg-[var(--color-secondary)] bg-opacity-25 text-[var(--color-text)] font-bold shadow-md border border-[var(--color-secondary)] border-opacity-40 px-4 py-3 text-base sm:text-lg hover:bg-opacity-40 active:bg-opacity-60 transition;
+  }
+
+  .status-card {
+    @apply bg-white/90 border border-[var(--color-secondary)] border-opacity-30 shadow-md rounded-2xl px-5 py-4 text-center font-semibold text-[var(--color-text)];
+  }
+
+  .viewer-overlay {
+    @apply relative min-h-screen flex flex-col bg-slate-950;
+  }
+
+  .viewer-shell {
+    @apply relative h-screen min-h-screen flex flex-col overflow-hidden bg-slate-950 text-white;
+  }
+
+  .viewer-backdrop {
+    @apply absolute inset-0 bg-black/70;
+  }
+
+  .viewer-header {
+    @apply relative z-20 flex items-center justify-start h-14 sm:h-16 px-5 pt-4 pb-3;
+  }
+
+  .viewer-back-button {
+    @apply text-lg sm:text-xl px-6 py-3 rounded-full shadow-xl;
+  }
+
+  .viewer-main {
+    @apply relative z-10 flex-1 flex flex-col px-4 sm:px-6 pb-4 sm:pb-6 overflow-hidden;
+  }
+
+  .viewer-stage {
+    @apply flex-1 bg-white/10 border border-white/15 rounded-[28px] shadow-2xl p-4 sm:p-6 flex overflow-hidden backdrop-blur-sm;
+  }
+
+  .viewer-swiper {
+    @apply flex-1;
+  }
+
+  .viewer-slide {
+    @apply w-full h-full flex items-center justify-center;  
+  }
+
+  .viewer-meta {
+    @apply relative z-20 shrink-0 w-full;
+  }
+
+  .viewer-meta-card {
+    @apply bg-white/95 text-[#333333] px-4 sm:px-6 py-4 sm:py-5 shadow-2xl border-t border-amber-100 rounded-t-[24px] max-h-[24vh] overflow-hidden;
+  }
+
+  .viewer-meta-title {
+    @apply text-sm sm:text-base font-bold text-[var(--color-accent)] truncate;
+  }
+
+  .viewer-meta-lines {
+    @apply flex flex-wrap gap-x-4 gap-y-1 text-[12px] sm:text-sm text-gray-700;
+  }
+
+  .viewer-meta-filename {
+    @apply text-[11px] sm:text-xs text-gray-500 break-all;
+  }
+
+  .result-thumb {
+    @apply w-full h-[170px] sm:h-[180px] object-cover rounded-[14px] sm:rounded-[16px] shadow-sm border border-amber-50 my-2;
+  }
+
+  .viewer-image {
+    @apply max-w-full max-h-[70vh] w-auto h-auto object-contain rounded-[24px] shadow-2xl;
+  }
 }
