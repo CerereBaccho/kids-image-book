@@ -5,6 +5,5 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   // GitHub Pagesでホスティングする場合、ベースパスを設定することがあります。
-  // 今回はルート(`/`)を想定します。
-  base: '/', 
+  base: '/kids-image-book', 
 });
