@@ -1,0 +1,7 @@
+{
+  "name": "swiper",
+  "version": "0.0.0-local",
+  "main": "react.jsx",
+  "module": "react.jsx",
+  "type": "module"
+}
