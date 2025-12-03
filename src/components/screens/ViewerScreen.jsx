@@ -53,34 +53,36 @@ const ViewerScreen = ({ searchResults, handleSetScreen }) => {
   const showEmptyState = !currentImage;
 
   return (
-    <div className="relative min-h-screen bg-slate-900 text-white flex flex-col">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-slate-900/80 to-black/85" aria-hidden />
+    <div className="viewer-overlay text-white">
+      <div className="absolute inset-0 bg-black/60" aria-hidden />
 
       <div className="fixed top-5 left-5 z-20">
         <button
           type="button"
           onClick={handleBack}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#FF7043] text-white text-lg font-extrabold shadow-xl hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white/40"
+          className="primary-button bg-[var(--color-accent)] text-white text-lg"
         >
           ← もどる
         </button>
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center w-full px-4 pt-20 pb-32 relative z-10">
-        <div className="w-full max-w-5xl aspect-[4/5] sm:aspect-[3/4] md:aspect-video flex items-center justify-center">
-          {showEmptyState ? (
-            <div className="flex flex-col items-center justify-center w-full h-full bg-white/90 text-slate-800 rounded-3xl border border-amber-100 shadow-2xl">
-              <p className="text-5xl mb-3">🖼️</p>
-              <p className="text-lg sm:text-xl font-semibold text-[#FF7043]">まだ ひらける しゃしん がないよ</p>
-              <p className="text-sm text-gray-600 mt-2">まえの画面にもどって、みたいしゃしんを えらんでね。</p>
-            </div>
-          ) : (
-            <div className="relative w-full h-full">
-              <ImageSwiper image={currentImage} onSwipe={handleSwipe} />
-              <div className="pointer-events-none absolute inset-y-0 left-2 flex items-center text-white/60 text-3xl sm:text-4xl font-bold">◀</div>
-              <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-white/60 text-3xl sm:text-4xl font-bold justify-end">▶</div>
-            </div>
-          )}
+        <div className="w-full max-w-5xl flex items-center justify-center">
+          <div className="w-full flex items-center justify-center bg-white/5 border border-white/10 rounded-[28px] shadow-2xl p-4 sm:p-6">
+            {showEmptyState ? (
+              <div className="flex flex-col items-center justify-center w-full h-full bg-white/90 text-slate-800 rounded-3xl border border-amber-100 shadow-2xl px-6 py-8">
+                <p className="text-5xl mb-3">🖼️</p>
+                <p className="text-lg sm:text-xl font-semibold text-[var(--color-accent)]">まだ ひらける しゃしん がないよ</p>
+                <p className="text-sm text-gray-600 mt-2">まえの画面にもどって、みたいしゃしんを えらんでね。</p>
+              </div>
+            ) : (
+              <div className="relative w-full">
+                <ImageSwiper image={currentImage} onSwipe={handleSwipe} />
+                <div className="pointer-events-none absolute inset-y-0 left-2 flex items-center text-white/70 text-3xl sm:text-4xl font-bold">◀</div>
+                <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-white/70 text-3xl sm:text-4xl font-bold justify-end">▶</div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

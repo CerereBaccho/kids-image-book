@@ -39,11 +39,11 @@ const ErrorScreen = ({ searchTerm, error, isLoading, handleSearch, handleSetScre
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-rose-100 via-white to-sky-100 text-gray-900 px-5 py-10 flex items-center justify-center">
-      <div className="max-w-2xl w-full bg-white/90 border border-rose-100 rounded-3xl shadow-2xl p-8 sm:p-10 text-center space-y-6">
+    <div className="app-background px-5 py-10 flex items-center justify-center">
+      <div className="max-w-2xl w-full app-card p-8 sm:p-10 text-center space-y-6">
         <div className="text-5xl sm:text-6xl">🥺</div>
         <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-rose-500 drop-shadow-sm">{headline}</h1>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--color-accent)] drop-shadow-sm">{headline}</h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
             {detail || 'もういちどためしたり、ちょっとだけ まってみてね。'}
           </p>
@@ -62,14 +62,14 @@ const ErrorScreen = ({ searchTerm, error, isLoading, handleSearch, handleSetScre
             type="button"
             onClick={handleRetry}
             disabled={isLoading}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-amber-400 hover:bg-amber-500 text-white text-lg font-bold rounded-full shadow-lg transition disabled:opacity-60 disabled:cursor-not-allowed"
+            className="primary-button w-full sm:w-auto px-7 sm:px-8 py-3 sm:py-4 text-lg"
           >
             もういちど ためす
           </button>
           <button
             type="button"
             onClick={handleBack}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white text-rose-500 text-lg font-bold rounded-full border-2 border-rose-200 shadow-sm hover:shadow-md"
+            className="secondary-button w-full sm:w-auto px-7 sm:px-8 py-3 sm:py-4 text-lg"
           >
             さがす 画面にもどる
           </button>

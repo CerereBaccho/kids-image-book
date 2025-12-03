@@ -9,3 +9,49 @@ body {
 #root {
   @apply min-h-screen flex flex-col;
 }
+
+:root {
+  --color-background: #FFF8E1;
+  --color-primary: #FFB74D;
+  --color-secondary: #4FC3F7;
+  --color-accent: #FF7043;
+  --color-text: #333333;
+}
+
+@layer components {
+  .app-background {
+    @apply min-h-screen bg-[var(--color-background)] text-[var(--color-text)];
+  }
+
+  .app-card, .card {
+    @apply bg-white/95 shadow-2xl rounded-[28px] border border-amber-100;
+  }
+
+  .primary-button {
+    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#ff835a] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)] focus:ring-opacity-40 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center gap-2 bg-[var(--color-secondary)] text-white font-extrabold rounded-full shadow-lg px-5 py-3 hover:bg-[#73d5ff] transition focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)] focus:ring-opacity-40;
+  }
+
+  .soft-chip {
+    @apply w-full rounded-full bg-[var(--color-secondary)] bg-opacity-25 text-[var(--color-text)] font-bold shadow-md border border-[var(--color-secondary)] border-opacity-40 px-4 py-3 text-base sm:text-lg hover:bg-opacity-40 active:bg-opacity-60 transition;
+  }
+
+  .status-card {
+    @apply bg-white/90 border border-[var(--color-secondary)] border-opacity-30 shadow-md rounded-2xl px-5 py-4 text-center font-semibold text-[var(--color-text)];
+  }
+
+  .viewer-overlay {
+    @apply relative min-h-screen flex flex-col bg-slate-950;
+  }
+
+  .result-thumb {
+    @apply w-full h-[170px] sm:h-[180px] object-cover rounded-[14px] sm:rounded-[16px] shadow-sm border border-amber-50 my-2;
+  }
+
+  .viewer-image {
+    @apply max-w-full max-h-[70vh] w-auto h-auto object-contain rounded-[24px] shadow-2xl;
+  }
+}
