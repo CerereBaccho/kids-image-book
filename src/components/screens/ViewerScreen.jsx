@@ -58,10 +58,12 @@ const ViewerScreen = ({ searchResults, handleSetScreen }) => {
           type="button"
           onClick={handleBack}
           className="primary-button viewer-back-button"
+
         >
           ← もどる
         </button>
       </header>
+
 
       <div className="viewer-main">
         <div className="viewer-stage">

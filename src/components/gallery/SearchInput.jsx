@@ -40,6 +40,7 @@ const SearchInput = ({ onSearch, defaultValue = '' }) => {
         className="bg-white/95 border-2 border-[var(--color-primary)]/70 rounded-full shadow-xl px-3 py-3 sm:px-4 sm:py-4"
       >
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 bg-white rounded-full px-5 py-4 sm:py-5 shadow-inner">
+
           <input
             type="text"
             value={value}

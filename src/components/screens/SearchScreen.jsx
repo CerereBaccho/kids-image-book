@@ -35,7 +35,6 @@ const SearchScreen = ({ searchTerm, isLoading, error, handleSearch }) => {
 
           <div className="w-full flex flex-col gap-6">
             <SearchInput onSearch={handleSearch} defaultValue={searchTerm} />
-
             <div className="w-full max-w-xl mx-auto">
               <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-text)] mb-4 text-center">みんなが よくみる きょうみワード</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
