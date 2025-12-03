@@ -1,6 +1,12 @@
 import React from 'react';
 import useAppState from '../../hooks/useAppState';
 
+const formatTitle = (title) => {
+  if (!title) return '';
+  const withoutExtension = title.replace(/\.[^./]+$/, '');
+  return withoutExtension.replace(/[_-]+/g, ' ').trim();
+};
+
 const GalleryScreen = () => {
   const { searchResults, searchTerm, isLoading, handleSetScreen } = useAppState();
 
@@ -20,36 +26,36 @@ const GalleryScreen = () => {
   const hasResults = Array.isArray(searchResults) && searchResults.length > 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-sky-50 text-gray-800">
-      <div className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-          <div>
-            <p className="text-sm text-gray-500">けんさくワード</p>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-sky-700">{searchTerm || '???'}</h1>
+    <div className="min-h-screen bg-[#FFF8E1] text-[#333333]">
+      <div className="max-w-6xl mx-auto px-4 py-8 sm:py-12">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          <div className="bg-white/80 border border-amber-100 rounded-2xl px-4 py-3 shadow-md">
+            <p className="text-sm text-gray-600">けんさくワード</p>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#FF7043]">{searchTerm || '???'}</h1>
           </div>
           <button
             type="button"
             onClick={handleBackToSearch}
-            className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-sky-200 text-sky-700 font-semibold shadow-sm hover:shadow-md transition"
+            className="self-start inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#4FC3F7] text-white font-extrabold shadow-lg hover:shadow-xl transition focus:outline-none focus:ring-4 focus:ring-[#4FC3F7]/40"
           >
-            もういちど さがす
+            ← もういちど さがす
           </button>
         </div>
 
         {isLoading && (
-          <div className="text-center text-lg font-semibold text-sky-600 mb-6">さがしているよ…</div>
+          <div className="text-center text-lg font-semibold text-[#4FC3F7] mb-6">さがしているよ…</div>
         )}
 
         {hasResults ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 sm:gap-7">
             {searchResults.map((image) => (
               <button
                 key={image.id}
                 type="button"
                 onClick={() => handleSelectImage(image)}
-                className="group relative overflow-hidden rounded-3xl bg-white shadow-lg border border-amber-100 focus:outline-none focus:ring-4 focus:ring-amber-200"
+                className="group relative overflow-hidden rounded-[24px] bg-white/90 shadow-lg border border-amber-200 focus:outline-none focus:ring-4 focus:ring-[#FFB74D]/40 transition transform active:scale-[0.98] hover:-translate-y-1"
               >
-                <div className="aspect-[4/3] bg-gradient-to-br from-slate-100 to-slate-50">
+                <div className="aspect-[4/3] bg-gradient-to-br from-white to-amber-50">
                   <img
                     src={image.thumbUrl}
                     alt={image.title}
@@ -57,10 +63,11 @@ const GalleryScreen = () => {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-3 text-left">
-                  <p className="text-sm font-bold text-gray-800 line-clamp-2">{image.title}</p>
+                <div className="p-3 sm:p-4 text-left">
+                  <p className="text-sm sm:text-base font-bold text-[#333333] line-clamp-2">{formatTitle(image.title)}</p>
                   <p className="text-xs text-gray-500 mt-1">タップしてひらく</p>
                 </div>
+                <div className="absolute inset-0 rounded-[24px] ring-0 group-active:ring-4 ring-[#4FC3F7]/30 transition" aria-hidden />
               </button>
             ))}
           </div>

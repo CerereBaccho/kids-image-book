@@ -35,29 +35,23 @@ const ImageSwiper = ({ image, onSwipe }) => {
 
   return (
     <div
-      className="relative w-full h-full bg-gradient-to-b from-sky-50 to-indigo-50 rounded-3xl shadow-xl overflow-hidden"
+      className="relative w-full h-full bg-gradient-to-b from-slate-800/60 via-slate-900/60 to-slate-950/70 rounded-[28px] shadow-2xl overflow-hidden border border-white/10"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="w-full h-full flex items-center justify-center p-6">
+      <div className="w-full h-full flex items-center justify-center p-6 sm:p-8">
         <img
           src={image.fullUrl}
           alt={image.title}
-          className="max-h-full max-w-full object-contain select-none"
+          className="max-h-full max-w-full object-contain select-none drop-shadow-2xl"
           draggable={false}
         />
       </div>
-      <div className="bg-white/80 backdrop-blur-md text-gray-800 p-4 sm:p-5 border-t border-white/60">
-        <p className="text-base sm:text-lg font-bold truncate" title={image.title}>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent p-4 sm:p-5 text-white">
+        <p className="text-sm sm:text-base font-semibold drop-shadow" title={image.title}>
           {image.title}
         </p>
-        <p className="text-sm text-gray-600 mt-1">
-          作者: <span className="font-semibold text-indigo-700">{image.artist || '不明'}</span>
-        </p>
-        <p className="text-sm text-gray-600">
-          ライセンス: <span className="font-semibold text-indigo-700">{image.license || '不明'}</span>
-        </p>
-        <p className="text-xs text-gray-500 mt-1">出典: {image.source || 'Wikimedia Commons'}</p>
+        <p className="text-xs text-white/80">スワイプでつぎのしゃしんへ</p>
       </div>
     </div>
   );
