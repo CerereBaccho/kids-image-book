@@ -35,7 +35,7 @@ const ImageSwiper = ({ image, onSwipe }) => {
 
   return (
     <div
-      className="relative w-full h-full bg-gradient-to-b from-slate-800/60 via-slate-900/60 to-slate-950/70 rounded-[28px] shadow-2xl overflow-hidden border border-white/10"
+      className="relative w-full h-full bg-gradient-to-b from-slate-800/70 via-slate-900/70 to-slate-950/80 rounded-[28px] shadow-2xl overflow-hidden border border-white/10"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -43,7 +43,7 @@ const ImageSwiper = ({ image, onSwipe }) => {
         <img
           src={image.fullUrl}
           alt={image.title}
-          className="max-h-full max-w-full object-contain select-none drop-shadow-2xl"
+          className="viewer-image select-none"
           draggable={false}
         />
       </div>

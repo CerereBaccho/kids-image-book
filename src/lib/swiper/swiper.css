@@ -1,0 +1,32 @@
+.local-swiper {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 0;
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+  overscroll-behavior: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.local-swiper::-webkit-scrollbar {
+  display: none;
+}
+
+.local-swiper-slide-wrapper {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.local-swiper-slide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
