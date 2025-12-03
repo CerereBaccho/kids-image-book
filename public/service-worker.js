@@ -1,12 +1,18 @@
 const APP_SHELL_CACHE = 'app-shell-v1';
 const IMAGE_CACHE = 'image-cache-v1';
 
+// ServiceWorker登録スコープに合わせて、キャッシュするパスのベースを計算する。
+// GitHub Pages のようにサブディレクトリ配信になるときに、ルート('/')を
+// 取りに行ってしまうと 404 になるため、登録スコープに合わせたパスに揃える。
+const scopeUrl = new URL(self.registration.scope);
+const BASE_PATH = scopeUrl.pathname.replace(/\/$/, '');
+
 // Core assets required for the app shell.
 const APP_SHELL_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/favicon.ico',
+  `${BASE_PATH}/`,
+  `${BASE_PATH}/index.html`,
+  `${BASE_PATH}/manifest.json`,
+  `${BASE_PATH}/favicon.ico`,
 ];
 
 self.addEventListener('install', (event) => {
@@ -49,13 +55,13 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Cache-first strategy for app shell assets and same-origin navigation.
-  if (url.origin === self.location.origin) {
-    if (request.mode === 'navigate') {
-      event.respondWith(cacheFirst(new Request('/index.html'), APP_SHELL_CACHE));
-      return;
-    }
+    if (url.origin === self.location.origin) {
+      if (request.mode === 'navigate') {
+        event.respondWith(cacheFirst(new Request(`${BASE_PATH}/index.html`), APP_SHELL_CACHE));
+        return;
+      }
 
-    const isAppShellAsset = APP_SHELL_ASSETS.includes(url.pathname);
+      const isAppShellAsset = APP_SHELL_ASSETS.includes(url.pathname);
     if (isAppShellAsset || request.destination === 'style' || request.destination === 'script' || request.destination === 'font') {
       event.respondWith(cacheFirst(request, APP_SHELL_CACHE));
       return;
