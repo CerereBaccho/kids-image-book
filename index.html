@@ -8,7 +8,7 @@
     <title>PWA こども図鑑</title>
     
     <!-- PWA: マニフェストファイルの指定 -->
-    <link rel="manifest" href="/kids-image-book/manifest.json" />
+    <link rel="manifest" href="./manifest.json" />
     <!-- PWA: iOS対応 (アイコンや表示モードの設定はmanifest.json内) -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -34,7 +34,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+          navigator.serviceWorker.register('./service-worker.js')
             .then(registration => {
               console.log('Service Worker registered: ', registration);
             })
