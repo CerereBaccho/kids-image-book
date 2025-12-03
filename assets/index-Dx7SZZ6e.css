@@ -1,1 +1,0 @@
-@tailwind base;@tailwind components;@tailwind utilities;body{@apply min-h-screen bg-[#FFF8E1] text-[#333333] antialiased;}#root{@apply min-h-screen flex flex-col;}
