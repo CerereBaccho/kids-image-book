@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import AttributionFooter from '../common/AttributionFooter';
 
 const getInitialIndex = (searchResults) => {

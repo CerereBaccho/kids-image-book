@@ -76,19 +76,26 @@ body.no-scroll {
   }
 
   .viewer-swiper {
-    @apply flex-1 h-full;
+    @apply relative flex-1 h-full overflow-hidden;
   }
 
+  .viewer-swiper .local-swiper,
+  .viewer-swiper .swiper {
+    @apply w-full h-full;
+  }
+
+  .viewer-swiper .local-swiper-slide-wrapper,
   .viewer-swiper .swiper-wrapper {
-    @apply h-full;
+    @apply h-full flex;
   }
 
+  .viewer-swiper .local-swiper-slide,
   .viewer-swiper .swiper-slide {
-    width: 100% !important;
+    @apply flex w-full h-full items-center justify-center;
   }
 
   .viewer-slide {
-    @apply w-full h-full flex items-center justify-center;  
+    @apply w-full h-full flex items-center justify-center;
   }
 
   .viewer-meta {
